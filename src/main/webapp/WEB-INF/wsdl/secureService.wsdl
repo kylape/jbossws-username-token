@@ -93,9 +93,6 @@
             <sp:UsernameToken sp:IncludeToken="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702/IncludeToken/AlwaysToRecipient">
               <wsp:Policy>
                 <sp:WssUsernameToken10/>
-                <wsp:Policy>
-                  <sp:HashPassword/>
-                </wsp:Policy>
               </wsp:Policy>
             </sp:UsernameToken>
           </wsp:Policy>
