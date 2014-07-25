@@ -4,6 +4,7 @@ import org.apache.cxf.interceptor.InInterceptors;
 import org.apache.cxf.annotations.Logging;
 import org.jboss.ws.api.annotation.EndpointConfig;
 import org.jboss.logging.Logger;
+import org.apache.cxf.annotations.GZIP;
 
 @javax.jws.WebService(wsdlLocation="WEB-INF/wsdl/secureService.wsdl")
 @EndpointConfig(configFile = "WEB-INF/jaxws-endpoint-config.xml", configName = "Custom WS-Security Endpoint")
@@ -12,6 +13,7 @@ import org.jboss.logging.Logger;
   "com.redhat.gss.wss.MyAuthorizationInterceptor"
 })
 @Logging(pretty=true)
+@GZIP
 public class SecureService
 {
   private static Logger log = Logger.getLogger(SecureService.class);

@@ -11,6 +11,8 @@ import org.apache.cxf.endpoint.Client;
 import org.apache.cxf.endpoint.Endpoint;
 import org.apache.cxf.ws.security.wss4j.WSS4JInInterceptor;
 import org.apache.cxf.ws.security.wss4j.WSS4JOutInterceptor;
+import org.apache.cxf.transport.common.gzip.GZIPInInterceptor;
+import org.apache.cxf.transport.common.gzip.GZIPOutInterceptor;
 import org.jboss.logging.Logger;
 
 public class SecureClient
@@ -32,14 +34,23 @@ public class SecureClient
     Service service = Service.create(wsdl, serviceNS);
     WsIntfc port = service.getPort(portNS, WsIntfc.class);
 
+    Client c = ClientProxy.getClient(port);
+    c.getInInterceptors().add(new GZIPInInterceptor());
+    c.getOutInterceptors().add(new GZIPOutInterceptor());
+
     Map<String, Object> ctx = ((BindingProvider)port).getRequestContext();
     ctx.put("ws-security.username", "klape");
     ctx.put("ws-security.password", "RedHat13#");
+    ctx.put(GZIPOutInterceptor.USE_GZIP_KEY, "YES");
 
     log.info("Invoking sayHello with user klape...");
     try
     {
-      port.sayHello("Kyle");
+      StringBuilder builder = new StringBuilder();
+      for(int i=0; i<1000; i++) {
+        builder.append("Kyle ");
+      }
+      port.sayHello(builder.toString());
       log.debug("Success: Invocation succeeded");
     }
     catch(Exception e)
