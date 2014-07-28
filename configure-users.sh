@@ -7,5 +7,5 @@ fi
 
 $JBOSS_HOME/bin/add-user.sh -a klape "RedHat13#"
 $JBOSS_HOME/bin/add-user.sh -a snoopy "RedHat13#"
-echo "klape=hello" >> $JBOSS_HOME/standalone/configuration/application-roles.properties
+echo -e "\nklape=hello" >> $JBOSS_HOME/standalone/configuration/application-roles.properties
 echo "snoopy=snoopies" >> $JBOSS_HOME/standalone/configuration/application-roles.properties
