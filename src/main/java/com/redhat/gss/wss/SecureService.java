@@ -2,6 +2,7 @@ package com.redhat.gss.wss;
 
 import javax.ejb.Stateless;
 import javax.jws.WebService;
+import javax.annotation.security.RolesAllowed;
 
 import org.apache.cxf.interceptor.InInterceptors;
 import org.apache.cxf.annotations.Logging;
@@ -15,19 +16,21 @@ import org.jboss.ejb3.annotation.SecurityDomain;
   "org.jboss.wsf.stack.cxf.security.authentication.SubjectCreatingPolicyInterceptor",
   "com.redhat.gss.wss.MyAuthorizationInterceptor"
 })
-@Logging(pretty=true)
+// @Logging(pretty=true)
 @Stateless
 @SecurityDomain("other")
 public class SecureService
 {
   private static Logger log = Logger.getLogger(SecureService.class);
 
+  @RolesAllowed("hello")
   public String sayHello(String name)
   {
     log.info("Hello, " + name);
     return "Hello, " + name;
   }
 
+  @RolesAllowed("snoopies")
   public String sayGoodbye(String name)
   {
     log.info("Goodbye, " + name);

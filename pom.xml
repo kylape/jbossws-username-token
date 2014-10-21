@@ -8,7 +8,7 @@
   <name>JBossWS Sign and Encrypt Example</name>
   <url>http://maven.apache.org</url>
   <properties>
-    <version.eap6>6.2.4.GA</version.eap6>
+    <version.eap6>6.3.0.GA</version.eap6>
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -49,6 +49,10 @@
     <dependency>
       <groupId>org.jboss.ejb3</groupId>
       <artifactId>jboss-ejb3-ext-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.jboss.spec.javax.annotation</groupId>
+      <artifactId>jboss-annotations-api_1.1_spec</artifactId>
     </dependency>
     <dependency>
       <groupId>org.jboss.logging</groupId>

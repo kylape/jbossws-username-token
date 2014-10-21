@@ -27,6 +27,7 @@ public class SecureClient
   {
     //Create JAX-WS client
     URL wsdl = new URL("http://localhost:8080/jbossws-username-token/SecureService?wsdl");
+    // URL wsdl = getClass().getResource("/META-INF/wsdl/secureService.wsdl");
     QName serviceNS = new QName("http://wss.gss.redhat.com/", "SecureServiceService");
     QName portNS = new QName("http://wss.gss.redhat.com/", "SecureServicePort");
     Service service = Service.create(wsdl, serviceNS);
