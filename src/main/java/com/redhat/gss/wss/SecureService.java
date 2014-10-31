@@ -13,7 +13,7 @@ import org.jboss.ejb3.annotation.SecurityDomain;
 @WebService(wsdlLocation="META-INF/wsdl/secureService.wsdl")
 @EndpointConfig(configFile = "META-INF/jaxws-endpoint-config.xml", configName = "Custom WS-Security Endpoint")
 @InInterceptors(interceptors = {
-  "org.jboss.wsf.stack.cxf.security.authentication.SubjectCreatingPolicyInterceptor",
+  "com.redhat.gss.wss.MySubjectCreatingPolicyInterceptor",
   "com.redhat.gss.wss.MyAuthorizationInterceptor"
 })
 // @Logging(pretty=true)
